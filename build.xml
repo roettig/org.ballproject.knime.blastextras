@@ -4,12 +4,16 @@
 	<property name="knimeSDKpath" value="/home/roettig/Downloads/eclipse_knime_2.3.1"/>
 	<property name="temp.folder" value="${java.io.tmpdir}/temp.folder_${pluginname}"/>
 	
+	<target name="clean">
+		<delete dir="${temp.folder}"/>
+	</target>
+	
 	<target name="prepare">
 		<mkdir dir="build"/>
 		<mkdir dir="${temp.folder}/package"/>
 	</target>
 	
-	<target name="build" depends="prepare">
+	<target name="build" depends="clean,prepare">
 		<path id="lib.jar.classpath">
 			<!-- include all jars found in KNIME SDK plugins -->
 			<fileset dir="${knimeSDKpath}/plugins">
