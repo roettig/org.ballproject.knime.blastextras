@@ -6,9 +6,13 @@ public class BlastHitCell extends DataCell implements BlastHitValue
 {
 	private double evalue;
 	private String id;
+	private String defline;
+	private String query_seq;
+	private String hit_seq;
+	private String midline_seq;
 	private double identity;
 	
-	public static DataCell makeCell(String id, double evalue, double identity)
+	public static BlastHitCell makeCell(String id, double evalue, double identity)
 	{
 		return new BlastHitCell(id,evalue,identity);
 	}
@@ -54,6 +58,54 @@ public class BlastHitCell extends DataCell implements BlastHitValue
 	public String toString()
 	{
 		return String.format("[BlastHit id:%s evalue:%e",id,evalue);
+	}
+
+	@Override
+	public String getDefline()
+	{
+		return this.defline;
+	}
+
+	@Override
+	public void setDefline(String s)
+	{
+		this.defline = s;
+	}
+
+	@Override
+	public void setQuerySequence(String s)
+	{
+		query_seq = s;
+	}
+
+	@Override
+	public String getQuerySequence()
+	{
+		return query_seq;
+	}
+
+	@Override
+	public void setHitSequence(String s)
+	{
+		hit_seq = s;
+	}
+
+	@Override
+	public String getHitSequence()
+	{
+		return hit_seq;
+	}
+
+	@Override
+	public void setMidlineSequence(String s)
+	{
+		midline_seq = s;
+	}
+
+	@Override
+	public String getMidlineSequence()
+	{
+		return midline_seq;
 	}
 
 }

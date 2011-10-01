@@ -118,7 +118,17 @@ public class BlastXMLDemangler implements Demangler
 			String lenS = n.valueOf("Hit_len/text()");
 			double len  = Double.parseDouble(lenS);
 			
-			return BlastHitCell.makeCell(id,evalue,(iden/len));
+			String defline   = n.valueOf("Hit_def/text()");
+			String query_seq = n.valueOf("Hit_hsps/Hsp[1]/Hsp_qseq/text()");
+			String hit_seq = n.valueOf("Hit_hsps/Hsp[1]/Hsp_hseq/text()");
+			String mid_seq = n.valueOf("Hit_hsps/Hsp[1]/Hsp_midline/text()");
+			
+			BlastHitCell ret =  BlastHitCell.makeCell(id,evalue,(iden/len));
+			ret.setDefline(defline);
+			ret.setHitSequence(hit_seq);
+			ret.setMidlineSequence(mid_seq);
+			ret.setQuerySequence(query_seq);
+			return ret;
 		}
 
 		@Override
