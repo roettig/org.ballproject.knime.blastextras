@@ -81,8 +81,6 @@ public class BlastXMLDemangler implements Demangler
 				e.printStackTrace();
 				throw new RuntimeException("could not read from input stream");
 			}
-	        //root = (Element) doc.selectSingleNode("/IdXML/IdentificationRun");
-	        //iter = root.elementIterator("PeptideIdentification");
 	        hits = doc.selectNodes("//Hit");
 	        iter = hits.iterator();
 		}
@@ -110,15 +108,16 @@ public class BlastXMLDemangler implements Demangler
 		{
 			Node n = (Node) iter.next();
 			String id = n.valueOf("Hit_id/text()");
-			//System.out.println(id);
+			
 			String eval = n.valueOf("Hit_hsps/Hsp[1]/Hsp_evalue/text()");
 			double evalue = Double.parseDouble(eval);
-			System.out.println(evalue);
+			
 			String idS  = n.valueOf("Hit_hsps/Hsp[1]/Hsp_identity/text()");
 			double iden = Double.parseDouble(idS);
+			
 			String lenS = n.valueOf("Hit_len/text()");
 			double len  = Double.parseDouble(lenS);
-			//System.out.println((iden/len));
+			
 			return BlastHitCell.makeCell(id,evalue,(iden/len));
 		}
 
@@ -130,25 +129,6 @@ public class BlastXMLDemangler implements Demangler
 		
 		public void close()
 		{
-		}
-	}
-
-	public static void main(String[] args) throws IOException
-	{
-		FileReader     in = new FileReader("/tmp/blast1265240291/1304911574.BLASTXML");
-		BufferedReader br = new BufferedReader(in);
-		String line = "";
-		StringBuffer sb = new StringBuffer();
-		while((line=br.readLine())!=null)
-		{
-			sb.append(line+"\n");
-		}
-		String cont = sb.toString();
-		Iterator<DataCell> iter = new BlastXMLFileDemanglerDelegate(cont.getBytes());
-		while(iter.hasNext())
-		{
-			BlastHitCell ec = (BlastHitCell) iter.next();
-			System.out.println(ec.getId());
 		}
 	}
 }
