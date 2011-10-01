@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Fragment-Host: org.ballproject.blast
+Bundle-Name: Blast Extras
+Bundle-SymbolicName: org.ballproject.knime.blastextras;singleton:=true
+Bundle-Version: 0.1.0
+Bundle-Vendor: roettig
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.core.runtime,
+ org.knime.workbench.core,
+ org.knime.workbench.repository,
+ org.knime.base,
+ org.knime.core,
+ org.knime.chem.types,
+ org.ballproject.knime,
+ org.ballproject.blast
+Eclipse-RegisterBuddy: org.knime.core
+Export-Package: org.ballproject.knime.blastextras.types,
+ org.ballproject.knime.blastextras.demanglers
+Import-Package: org.ballproject.blast.knime.nodes.mimetypes
