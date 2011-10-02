@@ -1,13 +1,11 @@
 package org.ballproject.knime.blastextras.demanglers;
 
-import java.io.BufferedReader;
+
 import java.io.ByteArrayInputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
 
 import org.ballproject.blast.knime.nodes.mimetypes.BlastXMLFileCell;
 import org.ballproject.knime.base.mime.MIMEFileCell;
@@ -15,7 +13,6 @@ import org.ballproject.knime.base.mime.demangler.Demangler;
 import org.ballproject.knime.blastextras.types.BlastHitCell;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
-import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 import org.knime.core.data.DataCell;
@@ -47,22 +44,13 @@ public class BlastXMLDemangler implements Demangler
 	@Override
 	public MIMEFileCell mangle(Iterator<DataCell> iter)
 	{
-		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public void close()
-	{
-		// TODO Auto-generated method stub
-		
 	}
 	
 	private static class BlastXMLFileDemanglerDelegate implements Iterator<DataCell>
 	{
 		private byte[] data;		
 		private Document doc;
-		private Element  root;
 		private Iterator iter;
 		private List<Node> hits;
 		private InputStream in;
@@ -135,10 +123,6 @@ public class BlastXMLDemangler implements Demangler
 		public void remove()
 		{
 			// NOP
-		}
-		
-		public void close()
-		{
 		}
 	}
 }
