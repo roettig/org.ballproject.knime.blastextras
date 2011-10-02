@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Fragment-Host: org.ballproject.blast
+Fragment-Host: org.ballproject.knime
 Bundle-Name: Blast Extras
 Bundle-SymbolicName: org.ballproject.knime.blastextras;singleton:=true
 Bundle-Version: 0.1.0
